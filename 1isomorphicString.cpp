@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        int hash[256]={0};
+        bool istCharMapped[256]={0};
+        for(int i=0;i<s.size();++i){
+            if(hash[s[i]]==0 && istCharMapped[t[i]]==0){
+                hash[s[i]]=t[i];
+                istCharMapped[t[i]]=true;
+            }
+        }
+
+        for(int i=0;i<s.size();++i){
+            if(char(hash[s[i]])!=t[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+int main(){
+    // isomorphic strings 
+    // egg and add both are is because both are similar (e->a) and (g->d)
+    Solution s;
+    cout<<s.isIsomorphic("badc","baba");
+    return 0;
+}
